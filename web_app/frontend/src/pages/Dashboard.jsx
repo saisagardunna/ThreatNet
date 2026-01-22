@@ -27,7 +27,8 @@ export default function Dashboard({ session }) {
 
         try {
             // Call Backend API (which handles Dataset + Groq + ML)
-            const response = await fetch('http://127.0.0.1:8000/analyze', {
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+            const response = await fetch(`${apiUrl}/analyze`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
